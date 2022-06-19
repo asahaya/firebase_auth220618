@@ -4,6 +4,8 @@ import 'package:firebase_auth220618/login_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
+import 'auth_page.dart';
+
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
@@ -21,9 +23,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       navigatorKey: NavigatorKey,
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: ThemeData.dark(),
       home: const MyHomePage(),
     );
   }
@@ -56,7 +56,7 @@ class _MyHomePageState extends State<MyHomePage> {
               } else if (snapshot.hasData) {
                 return HomePage();
               } else {
-                return LoginPage();
+                return AuthPage();
               }
             }),
       ),

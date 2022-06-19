@@ -2,11 +2,13 @@ import 'dart:math';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_auth220618/main.dart';
+import 'package:firebase_auth220618/singup_page.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
+  final VoidCallback onClickedSignUp;
+  const LoginPage({Key? key, required this.onClickedSignUp}) : super(key: key);
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -44,7 +46,7 @@ class _LoginPageState extends State<LoginPage> {
           textInputAction: TextInputAction.done,
           decoration: InputDecoration(labelText: 'Passeord'),
         ),
-        SizedBox(  height: 5 ),
+        SizedBox(height: 5),
         ElevatedButton.icon(
             style: ElevatedButton.styleFrom(
               minimumSize: Size.fromHeight(50),
@@ -55,15 +57,21 @@ class _LoginPageState extends State<LoginPage> {
               'Sign In',
               style: TextStyle(fontSize: 24),
             )),
-            SizedBox(height: 24),
-            RichText(text: TextSpan(style: TextStyle(color: Colors.white,fontSize: 20),
-            text: 'No Account? ',
-            children: [
+        SizedBox(height: 24),
+        RichText(
+            text: TextSpan(
+                recognizer: TapGestureRecognizer()
+                  ..onTap = widget.onClickedSignUp,
+                style: TextStyle(color: Colors.white, fontSize: 20),
+                text: 'No Account? ',
+                children: [
               TextSpan(
-                recognizer: TapGestureRecognizer()..onTap=
-              )
-            ]
-            ))
+                  text: 'Sign Up',
+                  style: TextStyle(
+                    decoration: TextDecoration.underline,
+                    color: Theme.of(context).colorScheme.secondary,
+                  ))
+            ]))
       ]),
     );
   }
