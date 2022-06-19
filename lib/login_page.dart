@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_auth220618/main.dart';
 import 'package:firebase_auth220618/singup_page.dart';
+import 'package:firebase_auth220618/utils.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
@@ -96,6 +97,7 @@ class _LoginPageState extends State<LoginPage> {
       Center(
         child: Text(eee.toString()),
       );
+      Utils.showSnackBar(eee.message);
     }
     NavigatorKey.currentState!.popUntil((route) => route.isFirst);
   }

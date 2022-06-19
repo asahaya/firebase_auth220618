@@ -1,10 +1,13 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_auth220618/homepage.dart';
 import 'package:firebase_auth220618/login_page.dart';
+import 'package:firebase_auth220618/utils.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'utils.dart';
 
 import 'auth_page.dart';
+import 'utils.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,9 +24,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      scaffoldMessengerKey: Utils.messengerKey,
       navigatorKey: NavigatorKey,
       title: 'Flutter Demo',
-      theme: ThemeData.dark(),
+      theme: ThemeData.dark().copyWith(
+          // colorScheme: ColorScheme.fromSwatch(
+
+          // primarySwatch: Color.)
+          //     .copyWith(secondary: Colors.tealAccent),
+          ),
       home: const MyHomePage(),
     );
   }
