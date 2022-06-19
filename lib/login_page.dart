@@ -7,6 +7,8 @@ import 'package:firebase_auth220618/utils.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
+import 'forget_password_page.dart';
+
 class LoginPage extends StatefulWidget {
   final VoidCallback onClickedSignUp;
   const LoginPage({Key? key, required this.onClickedSignUp}) : super(key: key);
@@ -59,6 +61,20 @@ class _LoginPageState extends State<LoginPage> {
               style: TextStyle(fontSize: 24),
             )),
         SizedBox(height: 24),
+        GestureDetector(
+          child: Text(
+            'Forget Password？',
+            style: TextStyle(
+              decoration: TextDecoration.underline,
+              color: Theme.of(context).colorScheme.secondary,
+              fontSize: 20,
+            ),
+          ),
+          onTap: () {
+            Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => ForgetPasswordPage()));
+          },
+        ),
         RichText(
             text: TextSpan(
                 recognizer: TapGestureRecognizer()
